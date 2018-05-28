@@ -11,24 +11,27 @@ namespace Task1_Console
         static void Main(string[] args)
         {
             Console.WriteLine(DateTime.Now);
-            var task = FindPrimesAsync();
+
+            Task<long> task1 = FindPrime(250000);
+            Task<long> task2 = FindPrime(400000);
+            
+            Console.WriteLine(task1.Result);
+
+            Console.WriteLine(task2.Result);
 
             Console.ReadLine();
 
         }
 
-        public static async Task FindPrimesAsync()
+        public static async Task<long> FindPrime(int nthPrimeToFind)
         {
-            var a = await FindPrime(250000);
+            var task = await Task.Run(() => FindPrimeSyncronous(nthPrimeToFind));
             Console.WriteLine(DateTime.Now);
-            var b = await FindPrime(400000);
-            Console.WriteLine(DateTime.Now);
-
-            Console.WriteLine(a);
-            Console.WriteLine(b);
+            return task;
         }
 
-        public static async Task<long> FindPrime(int nthPrimeToFind)
+
+        public static long FindPrimeSyncronous(int nthPrimeToFind)
         {
             long a = 2;
             int count = 0;
