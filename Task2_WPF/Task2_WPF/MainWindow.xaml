@@ -6,7 +6,12 @@
         xmlns:local="clr-namespace:Task2_WPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel>
+        <Label x:Name="lblJSONfromHTTP" Margin="10"></Label>
+        <Button x:Name="btnGetJSONAsync" Click="BtnGetJSON_ClickAsync">Get JSON Async</Button>
+        <Button x:Name="btnGetJSON" Click="btnGetJSON_Click">Get JSON Sync</Button>
+        <Button x:Name="btnClear" Click="btnClear_Click">Clear label</Button>
+        </StackPanel>
     </Grid>
 </Window>
